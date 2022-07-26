@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-5">
+    {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <div id="form_errors">
+            <strong>{{ message }}</strong>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <div class="card">
+        <div class="card-header">
+            Dashboard
+        </div>
+        <div class="card-body">
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 mb-4">
+                        <div class="card p-3 bg-warning shadow p-2" style="height: 200px;">
+                            <div class="card-body ">
+                                <h5 class="card-title"><i class="bi bi-list-check" style="font-style: normal;">  Tasks List</i></h5>
+                                <p class="card-text"><strong>Your Tasks: {{number_of_items}}</strong></p>
+                                <div class="d-grid gap-2">
+                                    <a href="{% url 'todo_app:tasks_list' %}" class="btn btn-warning stretched-link">See
+                                        List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12 mb-4">
+                        <div class="card p-3 text-light bg-danger shadow p-2" style="height: 200px;">
+                            <div class="card-body ">
+                                <h5 class="card-title"><i class="bi bi-plus-circle" style="font-style: normal;">  New Task</i></h5>
+                                <p class="card-text">Add new task to your personal list.</p>
+                                <div class="d-grid gap-2">
+                                    <a class="btn btn-danger stretched-link" href="{% url 'todo_app:new_task' %}"> Add
+                                        New Task </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 col-xs-12 mb-4">
+                        <div class="card p-3 text-light bg-primary shadow p-2" style="height: 200px;">
+                            <div class="card-body ">
+                                <div class="row">            
+                                    <h5 class="card-title">
+                                        <img class="rounded-circle account-img" src="{{profile.avatar.url}} "
+                                        style="cursor: pointer; height: 40px; width: 40px;" />
+                                        {% if profile.user.first_name == "" %}
+                                    Profile
+                                        {% else %}
+                                         {{profile.user.first_name}}                                         
+                                        {% endif %}
+                                    </h5>
+                                </div>
+                                <p class="card-text">View and edit your personal profile and information.</p>
+                                <div class="d-grid gap-2">
+
+                                    <a href="{% url 'account_app:profile' %}"
+                                        class="btn btn-primary stretched-link">Profile</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12 mb-4">
+                        <div class="card p-3 bg-success text-light shadow p-2" style="height: 200px;">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="bi bi-telephone" style="font-style: normal;">  About Us</i></h5>
+                                <p class="card-text">About Us</p>
+                                <div class="d-grid gap-2"> 
+                                    <a href=" {% url 'todo_app:about_us' %}"
+                                    class="btn btn-success stretched-link">About Us</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock%}

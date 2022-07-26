@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5 d-flex justify-content-center">
+  <div class="col-lg-6 col-md-8 col-xs-12 p-5 border shadow">
+    {% for message in messages %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <div id="form_errors">
+        <strong>{{ message }}</strong>
+
+      </div>
+      </div>
+      {% endfor%}
+      <form method="POST">
+        {% csrf_token %}
+        <div class="col-auto my-3">
+          <label for="id_username" class="form-label">Username</label>
+          <!-- <input type="username" class="form-control" id="id_username" placeholder="" > -->
+          <input class="form-control" type="text" name="username" maxlength="150" autocapitalize="none"
+            autocomplete="username" autofocus="" required="" id="id_username">
+        </div>
+        <!-- <div class="col-auto my-3">
+          <label for="id_email" class="form-label">Email</label>
+          <input class="form-control" type="email" name="email" maxlength="110" id="id_email" autocapitalize="none">
+        </div> -->
+        <div class="col-auto my-3">
+          <label for="id_password" class="form-label">Password</label>
+          <!-- <input type="password" class="form-control" id="id_password" placeholder="Password" > -->
+          <input type="password" class="form-control" name="password1" autocomplete="new-password" required=""
+            id="id_password1" placeholder="more than 8 char">
+          </div>
+            <div class="col-auto my-3">
+          <label for="id_password2" class="form-label">Password confirmation</label>
+          <input class="form-control" type="password" name="password2" autocomplete="new-password" required=""
+            id="id_password2" placeholder="Password confirmation">
+        </div>
+        <div class="d-flex justify-content-center">
+          <button type="submit" class="btn btn-dark mb-3">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

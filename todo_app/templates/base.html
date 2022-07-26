@@ -55,36 +55,38 @@
               <i class="bi bi-telephone" style="font-style: normal;"> About Us</i></a>
           </li>
 
-          <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              {% if user.is_authenticated %}
+
+
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% if user.is_authenticated %}
               <i class="bi bi-person-check-fill" style="font-style: normal;"> My Account</i>
               {% else %}
               <i class="bi bi-person-fill" style="font-style: normal;"> Account</i>
               {% endif %}
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
 
-              {% if user.is_authenticated %}
-
-              <li><a class="dropdown-item" href="{% url 'account_app:profile' %}">
-                  <div class="bi bi-briefcase-fill"> Profile</div>
-                </a></li>
-              <form action='{% url "account_app:logout" %}' method="POST">
-                {% csrf_token %}
-                <li><input class="btn btn-primary dropdown-item" type="submit" value="Logout" /></li>
-                <!-- <button class='btn btn-link'>logout</button> -->
-              </form>
-              {% else %}
-              <li><a class="dropdown-item" href="{% url 'account_app:login' %}">Login</a></li>
-              <li><a class="dropdown-item" href="{% url 'account_app:signup' %}">Signup</a></li>
-              {% endif %}
-            </ul>
+                {% if user.is_authenticated %}
+  
+                <li><a class="dropdown-item" href="{% url 'account_app:profile' %}">
+                    <div class="bi bi-briefcase-fill"> Profile</div>
+                  </a></li>
+                <form action='{% url "account_app:logout" %}' method="POST">
+                  {% csrf_token %}
+                  <li><input class="btn btn-primary dropdown-item" type="submit" value="Logout" /></li>
+                  <!-- <button class='btn btn-link'>logout</button> -->
+                </form>
+                {% else %}
+                <li><a class="dropdown-item" href="{% url 'account_app:login' %}">Login</a></li>
+                <li><a class="dropdown-item" href="{% url 'account_app:signup' %}">Signup</a></li>
+                {% endif %}
+              </ul>
           </li>
-
-        </ul>
+      </ul>
       </div>
     </div>
   </nav>

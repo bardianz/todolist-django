@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container bg-white my-4 p-3">
+
+    
+    <form method="POST" class="">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 my-1">
+                <label for="id_title">Task Title: </label>
+                <input dir="auto" class="form-control my-2" type="text" name="title" maxlength="110" required="" id="id_title"
+                    value="{{task.title}}">
+            </div>
+            <div class="col-md-4 col-sm-12 my-1">
+                <!-- Status -->
+            </div>
+        </div>
+
+
+
+        <div class="col my-3">
+            <label for="id_description">Task Description: </label>
+            <textarea dir="auto" class="form-control my-2" name="description" cols="40" rows="10" maxlength="400"
+                id="id_description" value="{{task.desc}}"></textarea>
+        </div>
+        {% csrf_token %}
+        <button class="btn btn-dark my-2" type="submit">Add</button>
+    </form>
+
+</div>
+{% endblock%}

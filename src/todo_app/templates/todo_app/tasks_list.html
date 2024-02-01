@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-5">
+
+{% if items_len == 0 %}
+<div class="alert alert-warning d-flex align-items-center shadow-sm my-3 border rounded">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+  </svg>
+      <svg class="bi flex-shrink-0 me-2 " width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        there is no task here..!
+        <!-- <button type="button" >Warning</button> -->
+        <a class="btn btn-light mx-3" href="{% url 'todo_app:new_task' %}">Add New Task</a>
+
+</div>
+</div>
+
+{% endif %}
+
+
+
+  {%for item in todo_items_list %}
+  <div class="item-container shadow-sm p-3 my-3 border rounded">
+    <div class="row justify-content-evenly">
+      <div class="col-md-9 col-lg-10 col-xs-12 d-flex align-items-center fs-4 text-capitalize text-truncate">
+
+        <div class="container">
+        <div class="col text-truncate d-flex align-items-center">
+          {% if item.checked == True %}
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </symbol>
+          </svg>
+          <svg class="bi flex-shrink-0 me-2 " width="16" height="16" role="img" aria-label="Success:">
+            <use xlink:href="#check-circle-fill" />
+          </svg>
+          {% endif %}
+         <a dir="auto" href="{% url 'todo_app:task_detail' item.id %}" class="text-decoration-none text-dark"> {{item.title}} </a> 
+        </div>
+        <div class="w-100"></div>
+        <div class="col text-muted fs-6 text-truncate">
+          <a dir="auto" href="{% url 'todo_app:task_detail' item.id %}" class="text-decoration-none text-dark">{{item.description}}</a> 
+        </div>
+      </div>
+    </div>
+
+      <div class="col-md-3 col-lg-2 col-xs-12 my-2 align-items-center">
+        <div class="col d-flex justify-content-center">
+          <span class="badge bg-success rounded-pill mx-1">{{item.created_date}}</span>
+        
+        </div>
+        <div class="w-100  my-2"></div>
+        <div class="col d-flex justify-content-center align-items-center">
+        <!-- <a href="{% url 'todo_app:task_detail' item.id %}" class="badge btn bg-dark rounded-pill mx-1">Details...</a> -->
+        <a href="{% url 'todo_app:task_detail' item.id %}" class="badge btn bg-warning rounded-pill mx-1">Edit</a>
+        <a class="badge btn bg-danger rounded-pill mx-1" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Delete</a>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Sure?!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Do you want to delete this item?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="{% url 'todo_app:delete_task' item.id %}" type="button" class="btn btn-danger"><i class="bi bi-trash">Delete</i></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+    </div>
+    </div>
+
+    <!-- <div class="row justify-content-evenly">
+      <div class="col-md-10 col-lg-10 col-10 col-sm-12 d-flex align-items-center">
+       
+      </div> -->
+
+<!--       
+      <div class="col-md-2 col-lg-2 my-2 col-xs-12 d-flex align-items-center justify-content-center">
+
+      </div> -->
+
+
+  {% endfor%}
+
+</div>
+
+
+
+
+
+
+
+{% endblock%}

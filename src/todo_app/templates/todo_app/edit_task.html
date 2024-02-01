@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container bg-white p-3">
+
+    {% csrf_token %}
+    <form method="POST" class="">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 my-1">
+                <label for="id_title">Task Title: </label>
+                <input class="form-control my-2" type="text" name="title" maxlength="110" required="" id="id_title"
+                    value="{{task.title}}">
+            </div>
+            <div class="col-md-4 col-sm-12 my-1">
+                <label for="id_title">Task Created Date: </label>
+                <input class="form-control my-2" type="text" name="title" maxlength="110" required="" id="id_title"
+                    value="{{task.checked}}" disabled>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-sm-12 my-1 align-items-center">
+            <label for="id_title">Status: </label>
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Done</label>
+            </div>
+        </div>
+        <div class="col my-3">
+            <label for="id_description">Task Description: </label>
+            <textarea class="form-control my-2" name="description" cols="40" rows="10" maxlength="400"
+                id="id_description" value="{{task.desc}}"></textarea>
+        </div>
+        <button class="btn btn-dark my-2" type="submit">Save</button>
+    </form>
+
+</div>
+{% endblock%}

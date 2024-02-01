@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3">
+
+<div class="card">
+    <!-- <div class="card-header">
+      Home
+    </div> -->
+    <div class="card-body">
+
+
+        <div class="container p-2">
+
+    
+            <div class="row">
+                <div class="col-sm-12 mb-3">
+                    <div class="card p-3 bg-info shadow p-2">
+                        <div class="card-body ">
+                            <h5 class="card-title">Login</h5>
+                            <p class="card-text">Login to use the features.</p>
+                            <div class="d-grid gap-2">
+        
+                                <a href="{% url 'account_app:login' %}" class="btn btn-info stretched-link">See List</a>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 mb-3">
+                    <div class="card p-3 text-light bg-danger shadow p-2">
+                        <div class="card-body ">
+                            <h5 class="card-title">Signup</h5>
+                            <p class="card-text">Register as a new member.</p>
+                            <div class="d-grid gap-2">
+        
+                                <a class="btn btn-danger stretched-link" href="{% url 'account_app:signup' %}"> Register </a>
+                            </div>
+        
+        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="card p-3 text-light bg-secondary shadow p-2">
+                        <div class="card-body ">
+        
+                            <h5 class="card-title">Profile</h5>
+                            <p class="card-text">View and edit your personal profile and information.</p>
+                            <div class="d-grid gap-2">
+        
+                                <a href="#" class="btn btn-secondary stretched-link">Profile</a>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock%}

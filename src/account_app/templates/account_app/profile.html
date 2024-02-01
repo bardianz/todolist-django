@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-5 d-flex justify-content-center">
+  <div class="col-lg-6 col-md-8 col-xs-12 p-5 border shadow">
+
+    <div class="row my-3 p-3 d-flex justify-content-center"> 
+      <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer; height: 300px; width: 300px;"/>
+  </div>
+  {% if user_form.errors %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+          <div id="form_errors">
+              {% for key, value in user_form.errors.items %}
+                  <strong>{{ value }}</strong>
+              {% endfor %}
+          </div>
+
+      </div>
+  {% endif %}
+  <div class="form-content">
+      <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-row">
+              <div class="col-md-5">
+                  <div class="form-group">
+                      <label class="small mb-1">First Name:</label>
+                          {{ user_form.first_name }}
+                      <label class="small mb-1">Last Name:</label>
+                          {{ user_form.last_name }}
+                      <label class="small mb-1">Username:</label>
+                          {{ user_form.username }}
+                      <label class="small mb-1">Email:</label>
+                          {{ user_form.email }}
+                  </div>
+                  <div class="form-group">
+                      <a href="{% url 'account_app:password_change' %}">Change Password</a>
+                      <hr>
+                      <label class="small mb-1">Change Avatar:</label>
+                      {{ profile_form.avatar }}
+                      
+                  </div>
+              </div>
+          </div>
+          <br><br>
+          <button type="submit" class="btn btn-dark">Save Changes</button>
+          <!-- <button type="reset" class="btn btn-dark">Reset</button> -->
+      </form>
+  </div>
+
+</div></div>
+
+
+
+<!-- <div class="container bg-white p-3">
+  <div class="d-flex justify-content-evenly align-items-center py-4">
+    <form method="POST">
+      {% csrf_token %}
+      {{form}}
+      <button class="btn btn-dark" type="submit">login</button>
+  </form>
+  </div>
+</div> -->
+
+<!-- 
+<div class="container mt-4">
+  <form class="mx-5 px-3" method="POST">
+</div> -->
+{% endblock%}
